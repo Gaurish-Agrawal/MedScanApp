@@ -47,7 +47,7 @@ def load_user(user_id):
 
 @auth_blueprint.route('/auth/upload', methods=["POST", "GET"])
 def upload():
-    print("test","\n\n\n\n")
+    print("test", "\n\n\n\n")
     email = current_user.email
     if request.method == "POST":
         user = db.session.query(User).filter(User.email == email).first()
@@ -62,10 +62,9 @@ def upload():
 
                 lst = []
 
-                #only for first run (not needed anymore!)
+                # only for first run (not needed anymore!)
                 with open('file.pkl', 'wb') as pickle_file:
                     pickle.dump(lst, pickle_file, protocol=pickle.HIGHEST_PROTOCOL)
-                
 
                 with open('file.pkl', 'rb') as pickle_load:
                     lst = pickle.load(pickle_load)
@@ -73,51 +72,11 @@ def upload():
                 lst.append(current_user.name)
                 with open('file.pkl', 'wb') as pickle_file:
                     pickle.dump(lst, pickle_file, protocol=pickle.HIGHEST_PROTOCOL)
-           
-                    #for citizens
-                return redirect(url_for("auth.cdashboard"))
+
+                    # for citizens
+                return redirect(url_for("services.cdashboard"))
 
     return render_template('upload.html')
-
-
-@auth_blueprint.route('/edithome', methods=["GET", "POST"])
-@login_required
-def cdashboard():
-
-    msg = ""
-
-    name = current_user.name
-    email = current_user.email
-    gender = current_user.gender
-    birthday =current_user.birthday
-    height =current_user.height
-    age =current_user.age
-    ec = current_user.econtact
-    medcon = current_user.condition
-
-    if request.method == "POST":
-        height = request.form.get("height")
-        age = request.form.get("age")
-        birthday = request.form.get("birthday")
-        gender = request.form.get("gender")
-        medcon = request.form.get("medcon")
-        ec = request.form.get("ec")
-
-
-        #user = User.query.filter_by(email=email).first()
-        current_user.height = height
-        current_user.age = age
-        current_user.birthday = birthday
-        current_user.gender = gender
-        current_user.condition = medcon
-        current_user.econtact = ec
-        db.session.commit()
-
-        print("Updated Edits\n\n\n\n\n")
-
-        msg = "Information Updated"
-  
-    return render_template('cdashboard.html', name=name, email=email, height=height, age=age, ec=ec, birthday=birthday, gender=gender, medcon=medcon, msg=msg)
 
 
 @auth_blueprint.route('/auth/register', methods=["POST", "GET"])
@@ -139,13 +98,11 @@ def register():
                 condition = request.form.get("conditions")
                 ec = request.form.get("ec")
 
-
-
-
             new_user = User(type=form.account_type.data, name=form.username.data, email=form.email.data,
                             password=generate_password_hash(form.password.data),
-                            image_path="", height=height, age=age, condition=condition,birthday=birthday,gender=gender,econtact=ec)
-            
+                            image_path="", height=height, age=age, condition=condition, birthday=birthday,
+                            gender=gender, econtact=ec)
+
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
@@ -155,7 +112,8 @@ def register():
 
         elif form.account_type.data == "Paramedic":
             new_paramedic = User(type=form.account_type.data, name=form.username.data, email=form.email.data,
-                            password=generate_password_hash(form.password.data), image_path="", height=None, age=None, condition=None,birthday=None,gender=None,econtact=None)
+                                 password=generate_password_hash(form.password.data), image_path="", height=None,
+                                 age=None, condition=None, birthday=None, gender=None, econtact=None)
             db.session.add(new_paramedic)
             db.session.commit()
             login_user(new_paramedic)
@@ -164,21 +122,21 @@ def register():
     return render_template('register.html', form=form)
 
 
-
 @auth_blueprint.route('/auth/login', methods=["POST", "GET"])
 def login():
-
     if current_user.is_authenticated:
         return redirect(url_for("services.dashboard"))
-    
+
     form = Login_Form()
     if form.validate_on_submit():
-        user = db.session.query(User).filter(User.email == form.email.data).first() #None
+        print(form.email.data)
+        user = db.session.query(User).filter(User.email == form.email.data).first()  # None
         if user is None:
             form.email.errors.append('You do not have a account please register')
 
             return render_template('login.html', form=form)
-        elif check_password_hash(user.password, form.password.data): #not check_password_hash(user.password, form.password.data)
+        elif check_password_hash(user.password,
+                                 form.password.data):  # not check_password_hash(user.password, form.password.data)
 
             form.password.errors.append('Please check your login details.')
             return render_template('login.html', form=form)
@@ -186,10 +144,10 @@ def login():
 
             login_user(user)
 
-            if user.account_type=="Paramedic":
+            if user.type == "Paramedic":
                 return redirect(url_for("services.dashboard"))
             else:
-                return "Hello World"
+                return redirect(url_for("services.cdashboard"))
 
     else:
         return render_template('login.html', form=form)

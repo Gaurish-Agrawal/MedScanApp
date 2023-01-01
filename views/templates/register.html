@@ -48,7 +48,7 @@
                                 {{ form.csrf_token }}
                                 <div class="form-group">
                                     <center>
-                                        {{ form.account_type(class_="form-select") }}
+                                        {{ form.account_type(class_="form-select", id_="typeAccount") }}
                                     </center>
                                 </div>
                                 <div class="form-group">
@@ -67,7 +67,7 @@
 
                                     <br><br><br>
 
-                                    <center>
+                                    <center id="details">
                                         <input type="text" id="conditions" name="conditions" placeholder="Conditions">
                                         <input type="text" id="ec" name="ec" placeholder="Emergency Contact">
                                         <input type="text" id="birthday" name="birthday" placeholder="Birthday (y-m-d)">
@@ -101,9 +101,27 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            var details = document.querySelector("#details")
+            details.style.display = "none";
+        })
+        document.addEventListener('input', function (event) {
+            // Only run on our select menu
+            var details = document.querySelector("#details")
+            console.log(event.target.options[event.target.selectedIndex].innerHTML)
+            if (event.target.options[event.target.selectedIndex].innerHTML === 'Paramedic') {
+                details.style.display = "none";
+            } else {
+                details.style.display = "block";
+            }
+
+
+        }, false);
+    </script>
 
 </body>
 
