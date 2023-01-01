@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Medscan</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<style type="text/css">
+    img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.portrait {
+    height: 80px;
+    width: 30px;
+}
+
+.landscape {
+    height: 30px;
+    width: 80px;
+}
+
+.square {
+    height: 75px;
+    width: 75px;
+}
+</style>
+
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+<div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column"> <!-- Main Content -->
+        <div id="content">   <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        
+
+
+
+                        <div class="card shadow mb-4">
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <form method="post" enctype="multipart/form-data">
+                                        {{form.hidden_tag()}}
+                                        
+
+                                        {% for error in form.photo.errors %}
+                                            <div class="alert alert-danger">
+                                                <center>
+                                                    <small class="mx-1">
+                                                        {{ error }}
+                                                    </small>
+                                                </center>
+                                            </div>
+                                        {% endfor %}
+
+                                        <center>
+                                            {{form.photo(class="form-control btn")}}
+                                        </center>
+                                        <div class="card shadow mb-4" style="margin-top: 5px;">
+                                            {{form.submit(class="btn btn-primary")}}
+                                         </div>
+                                        
+                                      
+
+                                    </form>
+
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <center>
+                                        
+                                        <h5><u>Legal Name</u>
+                                            <br><p class="text-primary"><b>{{name}}</b></p>
+                                        <h5>
+                                        <h5><u>Gender</u>
+                                            <br><p class="text-primary"><b>{{gender}}</b></p>
+                                        <h5>
+                                        <h5><u>Birthday</u>
+                                            <br><p class="text-primary"><b>{{bd}}</b></p>
+                                        <h5>
+                                        <h5><u>Height</u>
+                                            <br><p class="text-primary"><b>{{height}}'</b></p>
+                                        <h5>
+                                        <h5><u>Age</u>
+                                            <p class="text-primary"><b>{{age}}</b></p>
+                                        <h5>
+                                        <h5><u>Emergency Contact</u>
+                                            <br><p class="text-primary"><b>{{ec}}</b></p>
+                                        <h5>
+                                    
+
+                                           
+                                           
+                                            
+
+                                        </center>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                        <div class="row">
+
+                                {% for i in medcon %}
+                                            
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="card bg-primary text-white shadow">
+                                                    <div class="card-body">
+                                                        <p class="text-white">{{i[0]}}</p>
+                                                        <p class="text-whites">
+                                                        {{i[1]}}
+                                                        </p>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+
+                                {% endfor %}
+
+
+                                
+
+                               
+                                
+                               
+                        </div>
+
+
+
+
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Patient Profile</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                </div>
+                            </div>
+                                <div class="card-body">
+                                    {% if file_url %}
+                                                <center>
+                                                    <div class="mt-5">
+                                                        <img src="{{ file_url }}">
+                                                    </div>
+                                                </center>
+                                    {% endif %}
+                                </div>
+                        </div>
+
+
+                        <div class="card shadow mb-4">
+                            <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+                        </div>
+
+
+
+                        
+
+                    </div>
+                <div>                 
+            </div>                  
+        </div>
+    <div>
+</div>
+
+
+                           
+
+
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

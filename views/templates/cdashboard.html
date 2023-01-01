@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Medscan</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<style type="text/css">
+    img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.portrait {
+    height: 80px;
+    width: 30px;
+}
+
+.landscape {
+    height: 30px;
+    width: 80px;
+}
+
+.square {
+    height: 75px;
+    width: 75px;
+}
+
+input {border-top:0;border-right:0;border-left:0;border-bottom:1;border-bottom-color: blue;outline:0; text-align:cente}
+input:focus {outline:none!important;}
+
+</style>
+
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+<div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column"> <!-- Main Content -->
+        <div id="content">   <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        
+
+
+
+                        <div class="card shadow mb-4">
+                                
+
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <center>
+                                        
+                                        <h5><u>Legal Name</u>
+                                            <br><p class="text-primary"><b>{{name}}</b></p>
+                                        <h5>
+
+                                        <h5><u>Registred Email</u>
+                                            <br><p class="text-primary"><b>{{email}}</b></p>
+                                        <h5>
+                                            <br><br>
+
+
+
+                                            <form method="post" enctype="multipart/form-data">
+                                              
+
+                                            <label for="height">
+                                                  <h5><u>Height</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="height" name="height" value="{{height}}">
+                                              <br><br>
+
+                                            <label for="height">
+                                                  <h5><u>Age</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="age" name="age" value="{{age}}">
+                                              <br><br>
+
+                                              <label for="height">
+                                                  <h5><u>Gender</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="gender" name="gender" value="{{gender}}">
+                                              <br><br>
+
+                                              <label for="height">
+                                                  <h5><u>Birthday (Y-M-D)</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="birthday" name="birthday" value="{{birthday}}">
+                                              <br><br>
+
+                                              <label for="height">
+                                                  <h5><u>Emergency Contact</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="ec" name="ec" value="{{ec}}">
+                                              <br><br>
+
+                                              <label for="height">
+                                                  <h5><u>Medical Conditions</u><h5>
+                                            </label>
+                                            <input class="text-primary" type="text" id="medcon" name="medcon" value="{{medcon}}">
+                                              <br><br>
+
+
+                                              <button class="btn btn-primary btn-user btn-block" type="submit">
+                                                Edit information
+                                            </button>
+
+                                            <br>
+                                            <p>{{msg}}</p>
+                                              
+
+                                              
+
+                                            </form>
+
+                                            <!--
+                                        <h5><u>Gender</u>
+                                            <br><p class="text-primary"><b>{{gender}}</b></p>
+                                        <h5>
+                                        <h5><u>Birthday</u>
+                                            <br><p class="text-primary"><b>{{bd}}</b></p>
+                                        <h5>
+                                        <h5><u>Height</u>
+                                            <br><p class="text-primary"><b>{{height}}'</b></p>
+                                        <h5>
+                                        <h5><u>Age</u>
+                                            <p class="text-primary"><b>{{age}}</b></p>
+                                        <h5>
+                                        <h5><u>Emergency Contact</u>
+                                            <br><p class="text-primary"><b>{{ec}}</b></p>
+                                        <h5>
+                                        -->
+                                    
+
+                                           
+                                           
+                                            
+
+                                        </center>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                        
+
+
+
+
+                        <div class="card shadow mb-4">
+                            <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+                        </div>
+
+
+
+                        
+
+                    </div>
+                <div>                 
+            </div>                  
+        </div>
+    <div>
+</div>
+
+
+                           
+
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
