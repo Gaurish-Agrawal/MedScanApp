@@ -63,7 +63,16 @@
                                     <form method="post" enctype="multipart/form-data">
                                         {{form.hidden_tag()}}
                                         
-
+                                        
+                                        {% if not name %}
+                                            <div class="alert alert-danger">
+                                                <center>
+                                                    <small class="mx-1">
+                                                        Patient Not Found
+                                                    </small>
+                                                </center>
+                                            </div>
+                                        {% endif %}
                                         {% for error in form.photo.errors %}
                                             <div class="alert alert-danger">
                                                 <center>
