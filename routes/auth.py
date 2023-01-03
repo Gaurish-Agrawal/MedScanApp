@@ -147,7 +147,7 @@ def login():
             if user.type == "Paramedic":
                 return redirect(url_for("services.dashboard"))
             else:
-                return redirect(url_for("services.cdashboard"))
+                return redirect(url_for("auth.cdashboard"))
 
     else:
         return render_template('login.html', form=form)
