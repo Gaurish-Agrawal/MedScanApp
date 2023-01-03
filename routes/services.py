@@ -36,7 +36,7 @@ def dashboard():
     form = UploadForm()
     if form.validate_on_submit():
         filename = photos.save(form.photo.data)
-        prefix = r'/Users/gaurishagrawal/Desktop/medscanhack/views/static/images'
+        prefix = r'../views/static/images' #add ur dir.
         file_url = url_for('get_file', filename=filename)
         data = facialrec.returndata(prefix + file_url)
         if data:
