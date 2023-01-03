@@ -1,4 +1,4 @@
 # MedScanApp
 
 Project is submission for PoweringSTEM Hackathon 
-Group: Aahan P, Aniket G, Gaurish A, Kabir R.
+Group: Aahan P, Gaurish A, Aniket G, Kabir R.
