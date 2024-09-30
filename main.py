@@ -16,7 +16,7 @@ static_dir = os.path.abspath('views/static')
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 boostrap = Bootstrap5()
 
-app.config['SECRET_KEY'] = ';lkja;lkjg;lajk4oi;h    '
+app.config['SECRET_KEY'] = ';lkja;lkjg;lajk4oi;h    ' #arbitrary secret key needed for app to function, not actually sensitive data
 app.config['UPLOAD_FOLDER'] = "./"
 app.config['UPLOADED_PHOTOS_DEST'] = "./views/static/images/uploads/"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
